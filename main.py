@@ -69,6 +69,30 @@ def alocar_heap(heaps: dict):
     heaps[alvo].alocar(tamanho)
     input("\nPressione <Enter> para continuar...")
 
+def deletar_heap(heaps: dict) -> None:
+
+    limpar_tela()
+    if not heaps:
+        print("\nNenhum heap criado ainda.")
+        input("\nPressione <Enter> para continuar...")
+        return
+
+    limpar_tela()
+    print("Heaps disponíveis:")
+    for nome in heaps:
+        print(f"- {nome}")
+
+    alvo = input("\nDigite o nome do heap para alocar: ")
+    if alvo not in heaps:
+        print("\n Heap não encontrado.")
+        input("\nPressione <Enter> para continuar...")
+        return
+    
+    limpar_tela()
+    del heaps[alvo]
+    print(f"\nHeap '{alvo}' removido com sucesso!")
+    input("\nPressione <Enter> para continuar...")
+
 
 def menu_principal():
     
@@ -81,7 +105,8 @@ def menu_principal():
         print("2 - Deletar Heap")
         print("3 - Exibir Heap")
         print("4 - Alocar")
-        print("5 - Sair\n")
+        print("5 - Atribuição")
+        print("6 - Sair\n")
 
         opcao = input("Digite o número da opção desejada: ")
 
@@ -94,11 +119,15 @@ def menu_principal():
         elif opcao == "4":
             alocar_heap(heaps)
         elif opcao == "5":
+            atribuir_heap(heaps)
+        elif opcao == "6":
+            limpar_tela()
             print("Saindo...\n")
             break
         else:
             print("\nOpção inválida.")
             input("\nPressione <Enter> para continuar...")
+
 
 if __name__ == "__main__":
     menu_principal()
