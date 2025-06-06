@@ -1,6 +1,7 @@
 from heap import Heap
 import os
-
+from colorama import init, Back, Style
+init(autoreset=True)
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')

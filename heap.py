@@ -1,4 +1,5 @@
-
+from colorama import init, Back, Style
+init(autoreset=True)
 class Livre:
     def __init__(self, endereco, tamanho):
         self.inicio = endereco
@@ -83,11 +84,13 @@ class Heap:
     def exibe(self) -> None:
 
         print("\nEstado do Heap:")
-        print("Legenda: [X] = Ocupado, [ ] = Livre\n")
+        print("Legenda: " + Back.RED + "[X]" + Style.RESET_ALL + " = Ocupado, " + Back.GREEN + "[ ]" + Style.RESET_ALL + " = Livre\n")
 
         for bloco in self.heap:
-            print("[X]" if bloco else "[ ]", end=" ")
-        
+            if bloco:
+                 print(Back.RED + "[X]" + Style.RESET_ALL, end=" ")
+            else:
+                 print(Back.GREEN + "[ ]" + Style.RESET_ALL, end=" ")
         print("\n\nBlocos Alocados:")
 
         for i, bloco in enumerate(self.alocados, start=1):
